@@ -9,7 +9,7 @@
 import SwiftUI
 ///A `View`for entering in an order. Takes basic information about the order from `menuItem`
 struct MenuDetailView: View {
-    let sizes:[Size] = [.small, .medium, .large]
+
     @EnvironmentObject var settings:UserPreferences
     @ObservedObject var ordermodel: OrderModel
     @State var didOrder: Bool = false
@@ -39,29 +39,15 @@ struct MenuDetailView: View {
                 
             Spacer()
             
-            Picker(selection: $settings.size, label:Text("Pizza Size")){
-                ForEach (sizes, id:\.self){ size in
-                    Text(size.formatted()).tag(size)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-//            HStack{
-//                Spacer()
-//                Text("Pizza size")
-//                Text(settings.size.formatted())
-//            }
-            .font(.headline)
-           Stepper(value: $quantity, in: 1...10){
-                Text("Quantity: \(quantity)")
-                    .bold()
-            }
+            SizePickerView(size: $settings.size)
+            QuantityStepperView(quantity: $quantity)
 //            HStack{
 //                Text("Quantity:")
 //                Text("1")
 //                    .bold()
 //                Spacer()
 //            }
-            .padding()
+            
             HStack{
                 Text("Order:  \(formattedPrice)")
                     .font(.headline)
@@ -100,5 +86,29 @@ struct MenuDetailView_Previews: PreviewProvider {
     static var previews: some View {
         MenuDetailView(ordermodel:OrderModel(), menuItem: testMenuItem)
             .environmentObject(UserPreferences())
+    }
+}
+
+struct QuantityStepperView: View {
+    @Binding var quantity: Int
+    var body: some View {
+        Stepper(value: $quantity, in: 1...10){
+            Text("Quantity: \(quantity)")
+                .bold()
+        }
+    }
+}
+
+struct SizePickerView: View {
+    let sizes:[Size] = [.small, .medium, .large]
+    @Binding var size: Size
+    var body: some View {
+        Picker(selection: $size, label:Text("Pizza Size")){
+            ForEach (sizes, id:\.self){ size in
+                Text(size.formatted()).tag(size)
+            }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+        .font(.headline)
     }
 }

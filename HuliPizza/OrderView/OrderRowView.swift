@@ -12,6 +12,7 @@ struct OrderRowView: View {
     var body: some View {
         VStack {
             HStack(alignment: .firstTextBaseline){
+                Image(systemName:"\(orderItem.id).square")
                 Text(orderItem.description)
                     .font(.headline)
                 Spacer()
@@ -20,6 +21,7 @@ struct OrderRowView: View {
             }
             Text(orderItem.comments)
         }
+        .animation(.none)
     }
 }
 
