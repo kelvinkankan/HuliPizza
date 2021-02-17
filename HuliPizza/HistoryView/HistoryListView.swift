@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct HistoryListView: View {
+
+    var historyModel = HistoryModel()
+    @Binding var imageID : Int
     var body: some View {
-        List(0..<4){ item in
-            
-            HistoryRowView()
-        }
+        NavigationView{
+            List(historyModel.historyItems){ item in
+                NavigationLink(
+                    destination: HistoryDetailView(historyItem: item, imageID: self.$imageID)
+                ){
+                    
+                HistoryRowView(historyItem:item)
+                }
+            }
+        }.navigationBarTitle("Pizza History")
     }
 }
 
 struct HistoryListView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryListView()
+        HistoryListView(imageID:.constant(0))
     }
 }
 

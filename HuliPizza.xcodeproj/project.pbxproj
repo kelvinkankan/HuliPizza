@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A352AC925DCC9610030FFC3 /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A352AC825DCC9610030FFC3 /* HistoryDetailView.swift */; };
+		0A352ACD25DCD0180030FFC3 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A352ACC25DCD0180030FFC3 /* RootTabView.swift */; };
+		0A352AD325DD185A0030FFC3 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A352AD225DD185A0030FFC3 /* ConfirmView.swift */; };
 		0A4ECECC25DC390500DDCAF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4ECECB25DC390500DDCAF1 /* ContentView.swift */; };
 		0A4ECECE25DC390F00DDCAF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A4ECECD25DC390F00DDCAF1 /* Assets.xcassets */; };
 		0A4ECED125DC390F00DDCAF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A4ECED025DC390F00DDCAF1 /* Preview Assets.xcassets */; };
@@ -33,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A352AC825DCC9610030FFC3 /* HistoryDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
+		0A352ACC25DCD0180030FFC3 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		0A352AD225DD185A0030FFC3 /* ConfirmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		0A4ECEC625DC390500DDCAF1 /* HuliPizza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuliPizza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A4ECECB25DC390500DDCAF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0A4ECECD25DC390F00DDCAF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 		0A4ECEBD25DC390500DDCAF1 = {
 			isa = PBXGroup;
 			children = (
+				0A352ACC25DCD0180030FFC3 /* RootTabView.swift */,
 				0A4ECEC825DC390500DDCAF1 /* HuliPizza */,
 				0A4ECEC725DC390500DDCAF1 /* Products */,
 			);
@@ -120,6 +127,7 @@
 			children = (
 				0A6DD0E925DC503B0054DAD3 /* WorldHistoryofPizzaView.swift */,
 				0A6DD0EF25DC52190054DAD3 /* HistoryRowView.swift */,
+				0A352AC825DCC9610030FFC3 /* HistoryDetailView.swift */,
 				0A6DD0F225DC52D30054DAD3 /* HistoryListView.swift */,
 				0A6DD0EC25DC50EB0054DAD3 /* TitlePizzaHistoryView.swift */,
 			);
@@ -134,6 +142,7 @@
 				0A6DD0F525DC54FE0054DAD3 /* ListHeaderView.swift */,
 				0A6DD0DF25DC4E100054DAD3 /* MenuRowView.swift */,
 				0A6DD0E225DC4E560054DAD3 /* RatingView.swift */,
+				0A352AD225DD185A0030FFC3 /* ConfirmView.swift */,
 			);
 			path = MenuView;
 			sourceTree = "<group>";
@@ -231,6 +240,8 @@
 				0A6DD0F025DC52190054DAD3 /* HistoryRowView.swift in Sources */,
 				0A6DD0D825DC4C820054DAD3 /* OrderRowView.swift in Sources */,
 				0A6DD10625DCAC2C0054DAD3 /* MenuDetailView.swift in Sources */,
+				0A352AC925DCC9610030FFC3 /* HistoryDetailView.swift in Sources */,
+				0A352AD325DD185A0030FFC3 /* ConfirmView.swift in Sources */,
 				0A6DD0F325DC52D30054DAD3 /* HistoryListView.swift in Sources */,
 				0A6DD0D525DC4B780054DAD3 /* ContentHeaderView.swift in Sources */,
 				0A6DD0EA25DC503B0054DAD3 /* WorldHistoryofPizzaView.swift in Sources */,
@@ -239,6 +250,7 @@
 				0A6DD10A25DCB5F90054DAD3 /* SceneDelegate.swift in Sources */,
 				0A6DD0E325DC4E560054DAD3 /* RatingView.swift in Sources */,
 				0A6DD0F625DC54FE0054DAD3 /* ListHeaderView.swift in Sources */,
+				0A352ACD25DCD0180030FFC3 /* RootTabView.swift in Sources */,
 				0A6DD0F925DC57E70054DAD3 /* OrderTitleView.swift in Sources */,
 				0A6DD10225DCA70D0054DAD3 /* OrderModel.swift in Sources */,
 				0A6DD0FC25DC62170054DAD3 /* SelectedImageView.swift in Sources */,

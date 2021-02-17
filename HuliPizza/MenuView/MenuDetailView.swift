@@ -9,11 +9,18 @@
 import SwiftUI
 ///A `View`for entering in an order. Takes basic information about the order from `menuItem`
 struct MenuDetailView: View {
+    let sizes:[Size] = [.small, .medium, .large]
+    @EnvironmentObject var settings:UserPreferences
+    @ObservedObject var ordermodel: OrderModel
+    @State var didOrder: Bool = false
+    @State var quantity: Int = 1;
     var menuItem:MenuItem
     var formattedPrice:String{
-        String(format:"%3.2f",menuItem.price)
+        String(format:"%3.2f",menuItem.price * Double(quantity) * settings.size.rawValue)
     }
     func addItem(){
+//        ordermodel.add(menuID: menuItem.id)
+        didOrder = true
     }
     
 
@@ -31,24 +38,35 @@ struct MenuDetailView: View {
                 .layoutPriority(3)
                 
             Spacer()
-            HStack{
-                Spacer()
-                Text("Pizza size")
-                Text("Small")
+            
+            Picker(selection: $settings.size, label:Text("Pizza Size")){
+                ForEach (sizes, id:\.self){ size in
+                    Text(size.formatted()).tag(size)
+                }
             }
+            .pickerStyle(SegmentedPickerStyle())
+//            HStack{
+//                Spacer()
+//                Text("Pizza size")
+//                Text(settings.size.formatted())
+//            }
             .font(.headline)
-            HStack{
-                Text("Quantity:")
-                Text("1")
+           Stepper(value: $quantity, in: 1...10){
+                Text("Quantity: \(quantity)")
                     .bold()
-                Spacer()
             }
+//            HStack{
+//                Text("Quantity:")
+//                Text("1")
+//                    .bold()
+//                Spacer()
+//            }
             .padding()
             HStack{
                 Text("Order:  \(formattedPrice)")
                     .font(.headline)
                 Spacer()
-                Text("Order total: \(formattedPrice)" )
+                Text("Order total: " + ordermodel.formattedTotal )
                     .font(.headline)
             }
             .padding()
@@ -59,9 +77,15 @@ struct MenuDetailView: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .padding()
-                    .background(Color("G4"))
+                        .background(Color("G4"))
                         .foregroundColor(Color("IP"))
                         .cornerRadius(5)
+                }
+//                .alert(isPresented: $didOrder){
+//                    Alert(title: Text("Pizza Ordered"), message: Text( "You ordered a " + self.menuItem.name))
+//                }
+                .sheet(isPresented: $didOrder){
+                    ConfirmView(menuID: self.menuItem.id, isPresented: self.$didOrder, orderModel: self.ordermodel, quantity: self.$quantity, size: self.$settings.size)
                 }
                 Spacer()
             }
@@ -74,6 +98,7 @@ struct MenuDetailView: View {
 
 struct MenuDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuDetailView(menuItem: testMenuItem)
+        MenuDetailView(ordermodel:OrderModel(), menuItem: testMenuItem)
+            .environmentObject(UserPreferences())
     }
 }
